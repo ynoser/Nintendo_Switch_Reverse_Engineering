@@ -104,7 +104,7 @@ Based on these we can conclude on the following equation to find the final coeff
 
 Then we use the coefficient to convert the value into G (SI: 9.8m/s²):
 
-`acc_vector_component = acc_raw_component * acc_coeff`
+`acc_vector_component = (acc_raw_component - uint16_to_int16(cal_acc_origin)) * acc_coeff`
 
 ### Completely level* Accelerometer when horizontal on flat surface:
 
@@ -112,7 +112,7 @@ Then we use the coefficient to convert the value into G (SI: 9.8m/s²):
 
 We subtract `cal_acc_horizontal_offset` and then we use the coefficient to convert the value into G (SI: 9.8m/s²):
 
-`acc_vector_component = (acc_raw_component - uint16_to_int16(cal_acc_horizontal_offset)) * acc_coeff`
+`acc_vector_component = (acc_raw_component - uint16_to_int16(cal_acc_origin) - uint16_to_int16(cal_acc_horizontal_offset)) * acc_coeff`
 
 ### Gyroscope (Calibrated) - Rotation (in Degrees/s - dps)
 
